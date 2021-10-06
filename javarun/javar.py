@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from typing import List, Dict
-from .utils import list_jars, load_options
 
 
 @dataclass
@@ -84,20 +83,3 @@ class Javar:
     @property
     def cmd(self) -> str:
         return ' '.join(self.cmd_as_list())
-
-
-if __name__ == '__main__':
-    j = Javar(
-        java='/bin/java8',
-        class_path='some.jar:onemore.jar',
-        class_path_items=['j.jar'],
-        sys_args={'splash': 'image.png'},
-        sys_properties={'sun.java2d.noddraw': 'true'},
-        sys_options=['Xmx768m'],
-        main_class='Main',
-        main_args=['arg1', 'arg2']
-    )
-    print(j.cmd)
-
-
-# /home/kaa/.i4j_jres/1.8.0_152-tzdata2019c_64/bin/java -cp /opt/Jts/ibgateway/981/jars/jxbrowser-linux64-7.10.jar:/opt/Jts/ibgateway/981/jars/jts4launch-981.jar:/opt/Jts/ibgateway/981/jars/log4j-api-2.12.0.jar:/opt/Jts/ibgateway/981/jars/twslaunch-install4j-1.10.jar:/opt/Jts/ibgateway/981/jars/log4j-core-2.12.0.jar:/opt/Jts/ibgateway/981/jars/total-2020.jar:/opt/Jts/ibgateway/981/jars/jxbrowser-swing-7.10.jar:/opt/Jts/ibgateway/981/jars/twslaunch-981.jar:/opt/Jts/ibgateway/981/jars/locales.jar:/opt/Jts/ibgateway/981/jars/jxbrowser-7.10.jar -splash:/opt/Jts/ibgateway/981/.install4j/s_1fmt56t.png -Xmx768m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:ParallelGCThreads=20 -XX:ConcGCThreads=5 -XX:InitiatingHeapOccupancyPercent=70 -Dinstaller.uuid=255742fe-15c5-4692-bd56-c9f191049c90 -DvmOptionsPath=/home/kaa/Jts/ibgateway/981/ibgateway.vmoptions -Dsun.awt.nopixfmt=true -Dsun.java2d.noddraw=true -Dswing.boldMetal=false -Dsun.locale.formatasdefault=true ibgateway.GWClient
