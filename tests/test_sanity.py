@@ -17,4 +17,6 @@ class TestJavaRun(TestCase):
         )
         cmd = jr.cmd
 
+        self.assertIn('java8', cmd)
+        self.assertIn('j.jar:some.jar:onemore.jar', cmd)
         self.assertIn('-Xmx768m', cmd)
