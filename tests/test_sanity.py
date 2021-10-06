@@ -18,5 +18,3 @@ class TestJavaRun(TestCase):
         cmd = jr.cmd
 
         self.assertIn('-Xmx768m', cmd)
-
-
