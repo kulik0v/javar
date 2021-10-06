@@ -4,9 +4,6 @@ from javarun import Javar
 
 
 class TestJavaRun(TestCase):
-    def test_pass(self):
-        pass
-
     def test_cmd(self):
         jr = Javar(
             java='/bin/java8',
