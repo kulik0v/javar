@@ -9,7 +9,9 @@ class TestJavaRun(TestCase):
             bin='/bin/java8',
             class_path='some.jar:onemore.jar',
             class_path_items=['j.jar'],
-            sys_properties={'sun.java2d.noddraw': 'true'},
+            sys_properties={
+                'sun.java2d.noddraw': 'true'
+            },
             sys_args=[
                 '-Xmx768m'
             ],

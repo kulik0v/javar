@@ -1,44 +1,6 @@
-# Javar: Run java binary easy
+# Javar: Run java binary from python
 
 Javar allows you to generate java cli with a set of options easily.
-
-## All available options
-
-```python
-from javar import Javar
-
-javar = Javar(
-    # path to java binary
-    bin='/bin/java',
-    # class path string
-    class_path='some.jar:onemore.jar',
-    # class path list
-    class_path_items=['one.jar', 'two.jar'],
-
-    # system properties '-D<name>=<value>' format
-    # examples:
-    # -Dsun.java2d.noddraw=true will be {'sun.java2d.noddraw': 'true'}
-    # -Dsun.java2d.uiScale=2 will be {'sun.java2d.uiScale': '2'}
-    sys_properties={
-        'sun.java2d.noddraw': 'true',
-        'sun.java2d.uiScale': '2',
-    },
-    # rest of system args 
-    sys_args=[
-        '-Xmx768m',
-        '-splash:image_path.png'
-    ],
-
-    # application class
-    main_class='Main',
-    # or jar
-    main_jar='main.jar',
-    # application args
-    main_args=['arg1', 'arg2']
-)
-javar.as_str()
-
-```
 
 ## Usage
 
@@ -114,4 +76,40 @@ subprocess.run(javar.as_list(), env=java_env)
 
 ```bash
 pip install javar
+```
+
+## All available options
+
+```python
+from javar import Javar
+
+javar = Javar(
+    # path to java binary
+    bin='/bin/java',
+    # class path string
+    class_path='some.jar:onemore.jar',
+    # class path list
+    class_path_items=['one.jar', 'two.jar'],
+
+    # system properties '-D<name>=<value>' format
+    # examples:
+    # -Dsun.java2d.noddraw=true will be {'sun.java2d.noddraw': 'true'}
+    # -Dsun.java2d.uiScale=2 will be {'sun.java2d.uiScale': '2'}
+    sys_properties={
+        'sun.java2d.noddraw': 'true',
+        'sun.java2d.uiScale': '2',
+    },
+    # rest of system args 
+    sys_args=[
+        '-Xmx768m',
+        '-splash:image_path.png'
+    ],
+
+    # application class
+    main_class='Main',
+    # or jar
+    main_jar='main.jar',
+    # application args
+    main_args=['arg1', 'arg2']
+)
 ```
