@@ -6,7 +6,7 @@ setup(
     description='',
     url='https://github.com/kulik0v/javar',
     # download_url='https://github.com/kulik0v/javar/archive/master.zip',
-    author='Alex',
+    author='Alexander Kulikov',
     license='MIT',
     classifiers=[
         'Development Status :: 4 - Beta',
