@@ -1,11 +1,11 @@
 from setuptools import setup
 
 setup(
-    name='pyjavarun',
+    name='javar',
     version='1.0.0',
     description='',
-    url='https://github.com/kulik0v/pyjavarun',
-    # download_url='https://github.com/kulik0v/pyjavarun/archive/master.zip',
+    url='https://github.com/kulik0v/javar',
+    # download_url='https://github.com/kulik0v/javar/archive/master.zip',
     author='Alex',
     license='MIT',
     classifiers=[
@@ -18,7 +18,6 @@ setup(
     #   5 - Production/Stable
 
     # packages=find_packages(),
-    packages=['javarun'],
+    packages=['javar'],
     install_requires=[],
-
 )

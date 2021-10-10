@@ -4,19 +4,22 @@ from typing import List, Dict
 
 @dataclass
 class Javar:
-    java: str = 'java'
+    """
+    Represent java command line with its arguments.
+    """
+
+    bin: str = '/bin/java'
+
     class_path: str = ''
     class_path_items: List[str] = ()
     module_path: str = ''
     module_path_items: List[str] = ()
 
-    sys_args: Dict = None
     sys_properties: Dict = None
-    sys_options: List[str] = ()
+    sys_args: List[str] = ()
 
     main_class: str = ''
     main_jar: str = ''
-    # main_module: str = ''
     main_args: List[str] = ()
 
     def cmd_class_path(self) -> list:
@@ -37,23 +40,14 @@ class Javar:
 
         return []
 
-    def cmd_sys_args(self) -> list:
-        if self.sys_args:
-            return ['-{}:{}'.format(*i) for i in self.sys_args.items()]
-
-        return []
-
     def cmd_sys_properties(self) -> list:
         if self.sys_properties:
             return ['-D{}={}'.format(*i) for i in self.sys_properties.items()]
 
         return []
 
-    def cmd_sys_options(self) -> list:
-        if self.sys_options:
-            return ['-{}'.format(i) for i in self.sys_options]
-
-        return []
+    def cmd_sys_args(self) -> list:
+        return self.sys_args or []
 
     # noinspection PyMethodMayBeStatic
     def cmd_extra_params(self):
@@ -65,13 +59,12 @@ class Javar:
         else:
             return [self.main_class, ]
 
-    def cmd_as_list(self) -> list:
-        cmd = [self.java]
+    def as_list(self) -> list:
+        cmd = [self.bin]
         cmd += self.cmd_class_path()
         cmd += self.cmd_module_path()
-        cmd += self.cmd_sys_args()
         cmd += self.cmd_sys_properties()
-        cmd += self.cmd_sys_options()
+        cmd += self.cmd_sys_args()
         cmd += self.cmd_extra_params()
         cmd += self.cmd_main()
 
@@ -80,6 +73,5 @@ class Javar:
 
         return cmd
 
-    @property
-    def cmd(self) -> str:
-        return ' '.join(self.cmd_as_list())
+    def as_str(self) -> str:
+        return ' '.join(self.as_list())
