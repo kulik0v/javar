@@ -51,6 +51,7 @@ class Javar:
 
     # noinspection PyMethodMayBeStatic
     def cmd_extra_params(self):
+        # pylint: disable=no-self-use
         return []
 
     def cmd_main(self) -> list:
