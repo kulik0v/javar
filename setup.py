@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='javar',
-    version='0.0.3',
+    version='0.0.4',
     description='Javar allows you to generate java cli with a set of options easily.',
     long_description='Run java binary from python',
     long_description_content_type='text/plain',

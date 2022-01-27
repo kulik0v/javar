@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List, Dict
+from typing import List, Dict, Union
 
 
 @dataclass
@@ -16,11 +16,11 @@ class Javar:
     module_path_items: List[str] = ()
 
     sys_properties: Dict = None
-    sys_args: List[str] = ()
+    sys_args: Union[List[str], Dict[str, str]] = ()
 
     main_class: str = ''
     main_jar: str = ''
-    main_args: List[str] = ()
+    main_args: Union[List[str], Dict[str, str]] = ()
 
     def cmd_class_path(self) -> list:
         items = list(self.class_path_items)
@@ -47,7 +47,7 @@ class Javar:
         return []
 
     def cmd_sys_args(self) -> list:
-        return self.sys_args or []
+        return _args_as_list(self.sys_args)
 
     # noinspection PyMethodMayBeStatic
     def cmd_extra_params(self):
@@ -59,6 +59,9 @@ class Javar:
         else:
             return [self.main_class, ]
 
+    def cmd_main_args(self) -> list:
+        return _args_as_list(self.main_args)
+
     def as_list(self) -> list:
         cmd = [self.bin]
         cmd += self.cmd_class_path()
@@ -67,11 +70,16 @@ class Javar:
         cmd += self.cmd_sys_args()
         cmd += self.cmd_extra_params()
         cmd += self.cmd_main()
-
-        if self.main_args:
-            cmd += self.main_args
+        cmd += self.cmd_main_args()
 
         return cmd
 
     def as_str(self) -> str:
         return ' '.join(self.as_list())
+
+
+def _args_as_list(args) -> list:
+    if isinstance(args, dict):
+        return ['='.join(i) for i in args.items()]
+    else:
+        return list(args)

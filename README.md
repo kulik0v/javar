@@ -113,3 +113,17 @@ javar = Javar(
     main_args=['arg1', 'arg2']
 )
 ```
+
+Args also can be a dictionary.
+
+```python
+from javar import Javar
+
+javar = Javar(
+    main_jar='main.jar',
+    main_args={
+        '--host': 'localhost',
+        '--port': '8080',
+    }
+)
+```
