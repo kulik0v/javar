@@ -2,6 +2,6 @@
 ignore=tests,scripts
 ignore-patterns=^\._
 
-disable=missing-docstring,invalid-name,too-many-instance-attributes,no-else-return
+disable=missing-docstring,invalid-name,too-many-instance-attributes,no-else-return,consider-using-f-string
 
 max-line-length=240
