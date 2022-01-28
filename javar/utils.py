@@ -6,5 +6,5 @@ def list_jars(path, ends='.jar'):
 
 
 def load_options(fn):
-    with open(fn, 'rt') as f:
+    with open(fn, 'rt', encoding='utf-8') as f:
         return [line.strip() for line in f if line.startswith('-')]
