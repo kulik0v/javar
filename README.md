@@ -72,6 +72,21 @@ java_env['APP_INI'] = '/opt/app/config.ini'
 subprocess.run(javar.as_list(), env=java_env)
 ```
 
+### Using asyncio
+```python
+
+import asyncio
+
+...
+
+proc = await asyncio.create_subprocess_exec(
+    *javar.as_list(),
+    stdout=asyncio.subprocess.PIPE,
+    stderr=asyncio.subprocess.PIPE)
+
+stdout, stderr = await proc.communicate()
+```
+
 ## Installation
 
 ```bash
